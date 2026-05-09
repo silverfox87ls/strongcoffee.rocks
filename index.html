@@ -6,72 +6,249 @@
   <title>Tim Carter • Development Manager</title>
   <style>
     :root {
-      --bg: #0d0d0d;
+      --bg: #0a0a0a;
       --card: #1a1a1a;
       --text: #e6e6e6;
-      --accent: #c49b66; /* warm coffee-gold */
-      --muted: #888;
-      --radius: 10px;
+      --accent: #d4a574; /* rich coffee-gold */
+      --accent-dark: #8b6f47;
+      --muted: #999;
+      --radius: 12px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      background: var(--bg);
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1414 100%);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
       padding: 40px 20px;
-      display: flex;
-      justify-content: center;
     }
 
     .container {
-      max-width: 800px;
-      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid rgba(212, 165, 116, 0.2);
+    }
+
+    .coffee-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: steam 3s ease-in-out infinite;
+    }
+
+    @keyframes steam {
+      0%, 100% { transform: translateY(0) scaleX(1); }
+      50% { transform: translateY(-10px) scaleX(1.05); }
     }
 
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0;
-      color: var(--accent);
+      font-size: 3.2rem;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--accent) 0%, #e8c9a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      letter-spacing: -1px;
     }
 
-    h2 {
-      margin-top: 40px;
-      color: var(--accent);
-      font-weight: 600;
-      border-bottom: 1px solid #333;
-      padding-bottom: 6px;
+    .tagline {
+      font-size: 1.3rem;
+      color: var(--muted);
+      margin-bottom: 5px;
+      font-weight: 300;
     }
 
     .subtitle {
-      margin-top: 5px;
-      font-size: 1.2rem;
-      color: var(--muted);
+      font-size: 0.95rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 10px;
     }
 
+    /* Section Headers */
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--accent);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--accent-dark) 100%);
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: var(--radius);
+      margin-bottom: 25px;
+      border: 1px solid rgba(212, 165, 116, 0.1);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: rgba(212, 165, 116, 0.3);
+      box-shadow: 0 8px 32px rgba(212, 165, 116, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .skill-item {
+      background: rgba(212, 165, 116, 0.05);
+      padding: 15px 18px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .skill-item:hover {
+      background: rgba(212, 165, 116, 0.12);
+      transform: translateX(4px);
+    }
+
+    /* About Text */
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #d0d0d0;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 2px solid var(--accent);
+      cursor: pointer;
+    }
+
+    .cta-primary {
+      background: var(--accent);
+      color: #0a0a0a;
+    }
+
+    .cta-primary:hover {
+      background: #e8c9a0;
+      box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .cta-secondary:hover {
+      background: rgba(212, 165, 116, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Links */
     a {
       color: var(--accent);
       text-decoration: none;
+      transition: var(--transition);
+      position: relative;
     }
 
-    a:hover {
-      text-decoration: underline;
+    a:not(.cta-button):hover {
+      color: #e8c9a0;
     }
 
-    .card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: var(--radius);
-      margin-top: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    a:not(.cta-button)::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
     }
 
-    ul {
-      padding-left: 20px;
+    a:not(.cta-button):hover::after {
+      width: 100%;
     }
 
-    li {
-      margin-bottom: 6px;
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(212, 165, 116, 0.1);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
@@ -79,35 +256,68 @@
 <body>
   <div class="container">
 
-    <h1>Tim Carter</h1>
-    <p class="subtitle">Development Manager</p>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="coffee-icon">☕</div>
+      <h1>Tim Carter</h1>
+      <p class="tagline">Development Manager & Systems Architect</p>
+      <p class="subtitle">Strong Coffee. Stronger Code.</p>
+    </section>
 
-    <div class="card">
-      <h2>About Me</h2>
-      <p>
-       Enterprise Systems Integration Specialist and Software Developer with deep experience in ERP/WMS integrations, EDI workflows, database administration, and cross‑functional technical leader[...]
+    <!-- About Section -->
+    <section class="card">
+      <h2>About</h2>
+      <p class="about-text">
+        I'm an <span class="highlight">Enterprise Systems Integration Specialist</span> with deep expertise in ERP/WMS integrations, EDI workflows, and database administration. I thrive on solving complex technical problems while mentoring teams and driving measurable business impact. Whether it's root cause analysis, architecture, or building internal tools that scale—I deliver results that matter.
       </p>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>Core Skills</h2>
-      <ul>
-        <li>Root Cause Analysis</li>
-        <li>Database Administration (PostgreSQL, MSSQL)</li>
-        <li>Software Development (internal tools, integrations)</li>
-        <li>Data Automation & Reporting</li>
-        <li>Cross‑Functional Leadership</li>
-        <li>Technical Documentation</li>
-        <li>Mentorship & Coaching</li>
-      </ul>
-    </div>
+    <!-- Core Skills Section -->
+    <section class="card">
+      <h2>Core Strengths</h2>
+      <div class="skills-grid">
+        <div class="skill-item">🔍 Root Cause Analysis</div>
+        <div class="skill-item">📊 Database Administration</div>
+        <div class="skill-item">⚙️ Systems Integration</div>
+        <div class="skill-item">🛠️ Software Development</div>
+        <div class="skill-item">📈 Data Automation</div>
+        <div class="skill-item">👥 Technical Leadership</div>
+        <div class="skill-item">📚 Documentation</div>
+        <div class="skill-item">🎓 Mentorship</div>
+      </div>
+    </section>
 
-    <div class="card">
-      <h2>Contact</h2>
-      <p>
-        Connect on <a href="www.linkedin.com/in/carter-tim">LinkedIn</a>.
-      </p>
-    </div>
+    <!-- Tech Stack -->
+    <section class="card">
+      <h2>Technologies</h2>
+      <div class="skills-grid">
+        <div class="skill-item">PostgreSQL</div>
+        <div class="skill-item">MS SQL Server</div>
+        <div class="skill-item">Python</div>
+        <div class="skill-item">JavaScript/Node.js</div>
+        <div class="skill-item">EDI Integration</div>
+        <div class="skill-item">ERP Systems</div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="card">
+      <h2>Let's Connect</h2>
+      <p>I'm always interested in discussing challenging problems, new opportunities, and yes—good coffee.</p>
+      <div class="cta-section">
+        <a href="https://www.linkedin.com/in/carter-tim" class="cta-button cta-primary">
+          💼 LinkedIn Profile
+        </a>
+        <a href="mailto:contact@strongcoffee.rocks" class="cta-button cta-secondary">
+          ✉️ Send Email
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Made with ☕ and attention to detail</p>
+    </footer>
 
   </div>
 </body>
